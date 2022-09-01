@@ -1,0 +1,65 @@
+WED: 09-11		Marks: 15      Time: 50 Mins
+
+
+ODD Systems:
+Q1. You are given a sequence a1, a2, ..., aN. Find the smallest possible value of ai + aj, where 1 ≤ i < j ≤ N. Analyse the complexity also.
+
+Eg: 5 1 3 8 2 
+ans is 1+2 = 3
+
+
+Q2. discuss time and space complexity
+
+Display()
+{
+ x=32, n, i,j,k;
+for(i=0;i<n;i++)
+{
+    for(j=0;j<n;j++)
+    {
+        if(!(x%6))
+            break;
+	continue;
+        for(k=0;k<n;k++)
+        {
+            printf("%d  ",x);
+            break;
+        }
+
+} }
+return 0;
+
+}
+
+
+
+
+Even Systems:
+
+Q1. There are N horses in the stable. The skill of the horse i is represented by an integer S[i]. The Chef needs to pick 2 horses for the race such that the difference in their skills is minimum. Your task is to help him do this and report the minimum difference that is possible between 2 horses in the race.Analyse the complexity also.
+
+eg: 4 9 1 32 13
+ans is 3
+
+Q2. discuss time and space complexity
+
+Display()
+{
+ x=32, n, i,j,k;
+for(i=0;i<n;i++)
+{
+    for(j=0;j<n;j++)
+    {
+        if((x%6))
+            break;
+	continue;
+        for(k=0;k<n;k++)
+        {
+            printf("%d  ",x);
+            break;
+        }
+
+} }
+return 0;
+
+}

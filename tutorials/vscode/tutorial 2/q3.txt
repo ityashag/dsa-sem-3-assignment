@@ -1,0 +1,10 @@
+default constuructor called
+copy constructor is called
+copy costructor is called
+//default constuructor called
+parameterized constructor is called  ok
+ copy constructor is called
+copy costructor is called
+inside f1()  ok
+inside f2
+default constuructor called
