@@ -31,6 +31,7 @@ void postorder(int pos)
 }
 int main()
 {
+   
     
     int count=0;
     int d,i;
