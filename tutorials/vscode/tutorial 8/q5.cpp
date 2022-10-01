@@ -1,0 +1,225 @@
+#include <iostream>
+
+using namespace std;
+
+template <typename t>
+class queue
+{
+public:
+    t data;
+    queue *next;
+    queue(t d)
+    {
+        this->next = NULL;
+        this->data = d;
+    }
+
+    void push(queue *&front, queue *&rear, t d)
+    {
+        queue *n = new queue(d);
+        if (front == NULL)
+        {
+            front = n;
+            rear = n;
+            return;
+        }
+        else
+        {
+            rear->next = n;
+            rear = rear->next;
+        }
+    }
+    void pop(queue *&front, queue *&rear)
+    {
+        if (front == rear)
+        {
+            front = rear = NULL;
+        }
+        else
+        {
+            queue *to_del = front;
+            front = front->next;
+            delete (to_del);
+        }
+    }
+
+    bool isempty(queue *front)
+    {
+        return front == NULL ? true : false;
+    }
+
+    t front(queue *&front)
+    {
+        if (front != NULL)
+        {
+            return front->data;
+        }
+    }
+};
+
+// bst
+class bst
+{
+public:
+    int data;
+    bst *left;
+    bst *right;
+
+    bst(int d)
+    {
+        this->data = d;
+        this->left = NULL;
+        this->right = NULL;
+    }
+
+    bst *insert_into_bst(bst *root, int d)
+    {
+        if (root == NULL)
+        {
+            bst *n = new bst(d);
+            return n;
+        }
+        if (root->data < d)
+        {
+            root->right = insert_into_bst(root->right, d);
+        }
+        else
+        {
+            root->left = insert_into_bst(root->left, d);
+        }
+
+        return root;
+    }
+
+    void create(bst *&root)
+    {
+        cout << " enter the data : (0 to exit ) : ";
+        int d;
+        cin >> d;
+
+        while (d)
+        {
+            root = root->insert_into_bst(root, d);
+            cout << " enter the data : (0 to exit ) : ";
+            cin >> d;
+        }
+    }
+
+    void inorder(bst *root)
+    {
+        if (root == NULL)
+            return;
+
+        inorder(root->left);
+        cout << root->data << " ";
+        inorder(root->right);
+    }
+
+
+    bst * minval(bst*root)
+    {
+        bst * temp=root;
+        while(temp->left!=NULL)
+        {
+            temp=temp->left;
+        }
+        return temp;
+    
+    }
+
+
+    bst * del(bst * root,int key)
+    {
+        if(root==NULL) return root;
+        else if(root->data<key)
+        {
+            root->right=del(root->right,key);
+        }
+        else if(root->data>key)
+        {
+            root->left=del(root->left,key);
+        }
+        else
+        {
+            if(root->left==NULL)
+            {
+                bst *temp=root->right;
+                delete root;
+                return temp;
+            }
+            else if(root->right==NULL)
+            {
+                bst *temp=root->left;
+                delete root;
+                return temp;
+            }
+            else
+            {
+                bst * temp=minval(root->right);
+                root->data=temp->data;
+                root->right=del(root->right,temp->data);
+
+            }
+        }
+        return root;
+    }
+
+
+    void level_order(bst *root)
+    {
+
+        queue<bst *> *qf = NULL;
+        queue<bst *> *qr = NULL;
+
+        qf->push(qf, qr, root);
+        qf->push(qf, qr, NULL);
+
+        while (!qf->isempty(qf))
+        {
+            bst *front = qf->front(qf);
+            qf->pop(qf, qr);
+
+            if (front == NULL)
+            {
+                if (!qf->isempty(qf))
+                {
+                    qf->push(qf, qr, NULL);
+                }
+                cout << endl;
+            }
+            else
+            {
+                cout<<front->data<<" ";
+
+                if (front->left)
+                {
+                    qf->push(qf, qr, front->left);
+                }
+                if (front->right)
+                {
+                    qf->push(qf, qr, front->right);
+                }
+            }
+        }
+    }
+};
+
+int main()
+{
+    bst *root = NULL;
+
+    root->create(root);
+
+    int d;
+    cout<<"enter the data to delete : ";
+    cin>>d;
+
+    root->del(root,d);
+    cout<<endl;
+    root->inorder(root);
+
+   
+
+
+    
+}
