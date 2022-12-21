@@ -1,0 +1,5 @@
+Practise questions:
+1. Write a code to create a singly link list to store the marks of students. Sort the elements and display the top three marks.
+2. Write a program to check if two binary trees are identical or not.
+3. To utilize the space more efficiently, in array implementation of stack, data of two stacks is stored in a single array S[1..N]. First stack i.e. Stack A expands from the first index whereas the second stack i.e. Stack B expands from the last index. Top A and Top B are the top indices of Stack A and Stack B respectively. State the underflow and overflow conditions in terms of Top A and Top B. Explain with a suitable example.
+4. Write recursive function for Insertion sort and also compute its average case time complexity.

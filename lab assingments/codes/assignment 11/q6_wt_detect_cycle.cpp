@@ -6,7 +6,7 @@ class node
     public :
     int data;
     node * next;
-    
+
 };
 int main()
 {
@@ -16,6 +16,4 @@ int main()
     int e;
     cout<<"enter the number of edges : ";
     cin>>e;
-
-    
 }
